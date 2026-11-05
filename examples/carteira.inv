@@ -1,0 +1,48 @@
+carteira {
+    nome = "Carteira Diversificada";
+    perfil = "moderado";
+    objetivo = "Crescimento patrimonial";
+    horizonte_temporal = 5 anos;
+    capital_total = 100000.00;
+
+    alocacao {
+        acoes_nacionais = 30%;
+        acoes_internacionais = 20%;
+        fundos_imobiliarios = 15%;
+        fundos_multimercado = 10%;
+        renda_fixa = 25%;
+    }
+
+    restricoes {
+        volatilidade_maxima = 10%;
+        taxa_administrativa_maxima = 2%;
+
+        concentracao {
+            ativo_maximo = 15%;
+            setor_maximo = 30%;
+        }
+
+        setorial {
+            tecnologia = 10%;
+            financeiro = 5%;
+            energia = 10%;
+            saude = 10%;
+            outros = 65%;
+        }
+
+        geografico {
+            brasil = 50%;
+            emergentes = 15%;
+            desenvolvidos = 35%;
+        }
+    }
+
+    rebalanceamento {
+        frequencia = trimestral;
+        tolerancia = 2%;
+        metodo = proporcional;
+    }
+
+    analisar;
+    gerar_relatorio;
+}
