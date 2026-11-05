@@ -1,0 +1,1330 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMA
+    DIVIDE
+    MINUS
+    PLUS
+    TIMES
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> carteira
+Rule 2     carteira -> CARTEIRA LBRACE statements RBRACE
+Rule 3     statements -> statements statement
+Rule 4     statements -> empty
+Rule 5     empty -> <empty>
+Rule 6     statement -> assignment
+Rule 7     statement -> section
+Rule 8     statement -> command
+Rule 9     statement -> conditional
+Rule 10    assignment -> key ASSIGN value SEMICOLON
+Rule 11    key -> ID
+Rule 12    key -> NOME
+Rule 13    key -> PERFIL
+Rule 14    key -> OBJETIVO
+Rule 15    key -> HORIZONTE_TEMPORAL
+Rule 16    key -> CAPITAL_TOTAL
+Rule 17    key -> VOLATILIDADE_MAXIMA
+Rule 18    key -> TAXA_ADMINISTRATIVA_MAXIMA
+Rule 19    key -> ATIVO_MAXIMO
+Rule 20    key -> SETOR_MAXIMO
+Rule 21    key -> FREQUENCIA
+Rule 22    key -> TOLERANCIA
+Rule 23    key -> METODO
+Rule 24    value -> NUMBER
+Rule 25    value -> PERCENTAGE
+Rule 26    value -> STRING
+Rule 27    value -> ID
+Rule 28    value -> NUMBER YEARS
+Rule 29    section -> section_name LBRACE statements RBRACE
+Rule 30    section_name -> ALOCACAO
+Rule 31    section_name -> RESTRICOES
+Rule 32    section_name -> CONCENTRACAO
+Rule 33    section_name -> SETORIAL
+Rule 34    section_name -> GEOGRAFICO
+Rule 35    section_name -> REBALANCEAMENTO
+Rule 36    command -> ANALISAR SEMICOLON
+Rule 37    command -> GERAR_RELATORIO SEMICOLON
+Rule 38    command -> IMPRIMIR LPAREN value RPAREN SEMICOLON
+Rule 39    conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE
+Rule 40    expression -> key relational_operator value
+Rule 41    relational_operator -> EQ
+Rule 42    relational_operator -> NE
+Rule 43    relational_operator -> LT
+Rule 44    relational_operator -> GT
+Rule 45    relational_operator -> LE
+Rule 46    relational_operator -> GE
+
+Terminals, with rules where they appear
+
+ALOCACAO             : 30
+ANALISAR             : 36
+ASSIGN               : 10
+ATIVO_MAXIMO         : 19
+CAPITAL_TOTAL        : 16
+CARTEIRA             : 2
+COMMA                : 
+CONCENTRACAO         : 32
+DIVIDE               : 
+EQ                   : 41
+FREQUENCIA           : 21
+GE                   : 46
+GEOGRAFICO           : 34
+GERAR_RELATORIO      : 37
+GT                   : 44
+HORIZONTE_TEMPORAL   : 15
+ID                   : 11 27
+IMPRIMIR             : 38
+LBRACE               : 2 29 39
+LE                   : 45
+LPAREN               : 38 39
+LT                   : 43
+METODO               : 23
+MINUS                : 
+NE                   : 42
+NOME                 : 12
+NUMBER               : 24 28
+OBJETIVO             : 14
+PERCENTAGE           : 25
+PERFIL               : 13
+PLUS                 : 
+RBRACE               : 2 29 39
+REBALANCEAMENTO      : 35
+RESTRICOES           : 31
+RPAREN               : 38 39
+SE                   : 39
+SEMICOLON            : 10 36 37 38
+SETORIAL             : 33
+SETOR_MAXIMO         : 20
+STRING               : 26
+TAXA_ADMINISTRATIVA_MAXIMA : 18
+TIMES                : 
+TOLERANCIA           : 22
+VOLATILIDADE_MAXIMA  : 17
+YEARS                : 28
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment           : 6
+carteira             : 1
+command              : 8
+conditional          : 9
+empty                : 4
+expression           : 39
+key                  : 10 40
+program              : 0
+relational_operator  : 40
+section              : 7
+section_name         : 29
+statement            : 3
+statements           : 2 3 29 39
+value                : 10 38 40
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . carteira
+    (2) carteira -> . CARTEIRA LBRACE statements RBRACE
+
+    CARTEIRA        shift and go to state 3
+
+    program                        shift and go to state 1
+    carteira                       shift and go to state 2
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> carteira .
+
+    $end            reduce using rule 1 (program -> carteira .)
+
+
+state 3
+
+    (2) carteira -> CARTEIRA . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 4
+
+
+state 4
+
+    (2) carteira -> CARTEIRA LBRACE . statements RBRACE
+    (3) statements -> . statements statement
+    (4) statements -> . empty
+    (5) empty -> .
+
+    RBRACE          reduce using rule 5 (empty -> .)
+    ANALISAR        reduce using rule 5 (empty -> .)
+    GERAR_RELATORIO reduce using rule 5 (empty -> .)
+    IMPRIMIR        reduce using rule 5 (empty -> .)
+    SE              reduce using rule 5 (empty -> .)
+    ID              reduce using rule 5 (empty -> .)
+    NOME            reduce using rule 5 (empty -> .)
+    PERFIL          reduce using rule 5 (empty -> .)
+    OBJETIVO        reduce using rule 5 (empty -> .)
+    HORIZONTE_TEMPORAL reduce using rule 5 (empty -> .)
+    CAPITAL_TOTAL   reduce using rule 5 (empty -> .)
+    VOLATILIDADE_MAXIMA reduce using rule 5 (empty -> .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 5 (empty -> .)
+    ATIVO_MAXIMO    reduce using rule 5 (empty -> .)
+    SETOR_MAXIMO    reduce using rule 5 (empty -> .)
+    FREQUENCIA      reduce using rule 5 (empty -> .)
+    TOLERANCIA      reduce using rule 5 (empty -> .)
+    METODO          reduce using rule 5 (empty -> .)
+    ALOCACAO        reduce using rule 5 (empty -> .)
+    RESTRICOES      reduce using rule 5 (empty -> .)
+    CONCENTRACAO    reduce using rule 5 (empty -> .)
+    SETORIAL        reduce using rule 5 (empty -> .)
+    GEOGRAFICO      reduce using rule 5 (empty -> .)
+    REBALANCEAMENTO reduce using rule 5 (empty -> .)
+
+    statements                     shift and go to state 5
+    empty                          shift and go to state 6
+
+state 5
+
+    (2) carteira -> CARTEIRA LBRACE statements . RBRACE
+    (3) statements -> statements . statement
+    (6) statement -> . assignment
+    (7) statement -> . section
+    (8) statement -> . command
+    (9) statement -> . conditional
+    (10) assignment -> . key ASSIGN value SEMICOLON
+    (29) section -> . section_name LBRACE statements RBRACE
+    (36) command -> . ANALISAR SEMICOLON
+    (37) command -> . GERAR_RELATORIO SEMICOLON
+    (38) command -> . IMPRIMIR LPAREN value RPAREN SEMICOLON
+    (39) conditional -> . SE LPAREN expression RPAREN LBRACE statements RBRACE
+    (11) key -> . ID
+    (12) key -> . NOME
+    (13) key -> . PERFIL
+    (14) key -> . OBJETIVO
+    (15) key -> . HORIZONTE_TEMPORAL
+    (16) key -> . CAPITAL_TOTAL
+    (17) key -> . VOLATILIDADE_MAXIMA
+    (18) key -> . TAXA_ADMINISTRATIVA_MAXIMA
+    (19) key -> . ATIVO_MAXIMO
+    (20) key -> . SETOR_MAXIMO
+    (21) key -> . FREQUENCIA
+    (22) key -> . TOLERANCIA
+    (23) key -> . METODO
+    (30) section_name -> . ALOCACAO
+    (31) section_name -> . RESTRICOES
+    (32) section_name -> . CONCENTRACAO
+    (33) section_name -> . SETORIAL
+    (34) section_name -> . GEOGRAFICO
+    (35) section_name -> . REBALANCEAMENTO
+
+    RBRACE          shift and go to state 7
+    ANALISAR        shift and go to state 15
+    GERAR_RELATORIO shift and go to state 16
+    IMPRIMIR        shift and go to state 17
+    SE              shift and go to state 18
+    ID              shift and go to state 19
+    NOME            shift and go to state 20
+    PERFIL          shift and go to state 21
+    OBJETIVO        shift and go to state 22
+    HORIZONTE_TEMPORAL shift and go to state 23
+    CAPITAL_TOTAL   shift and go to state 24
+    VOLATILIDADE_MAXIMA shift and go to state 25
+    TAXA_ADMINISTRATIVA_MAXIMA shift and go to state 26
+    ATIVO_MAXIMO    shift and go to state 27
+    SETOR_MAXIMO    shift and go to state 28
+    FREQUENCIA      shift and go to state 29
+    TOLERANCIA      shift and go to state 30
+    METODO          shift and go to state 31
+    ALOCACAO        shift and go to state 32
+    RESTRICOES      shift and go to state 33
+    CONCENTRACAO    shift and go to state 34
+    SETORIAL        shift and go to state 35
+    GEOGRAFICO      shift and go to state 36
+    REBALANCEAMENTO shift and go to state 37
+
+    statement                      shift and go to state 8
+    assignment                     shift and go to state 9
+    section                        shift and go to state 10
+    command                        shift and go to state 11
+    conditional                    shift and go to state 12
+    key                            shift and go to state 13
+    section_name                   shift and go to state 14
+
+state 6
+
+    (4) statements -> empty .
+
+    RBRACE          reduce using rule 4 (statements -> empty .)
+    ANALISAR        reduce using rule 4 (statements -> empty .)
+    GERAR_RELATORIO reduce using rule 4 (statements -> empty .)
+    IMPRIMIR        reduce using rule 4 (statements -> empty .)
+    SE              reduce using rule 4 (statements -> empty .)
+    ID              reduce using rule 4 (statements -> empty .)
+    NOME            reduce using rule 4 (statements -> empty .)
+    PERFIL          reduce using rule 4 (statements -> empty .)
+    OBJETIVO        reduce using rule 4 (statements -> empty .)
+    HORIZONTE_TEMPORAL reduce using rule 4 (statements -> empty .)
+    CAPITAL_TOTAL   reduce using rule 4 (statements -> empty .)
+    VOLATILIDADE_MAXIMA reduce using rule 4 (statements -> empty .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 4 (statements -> empty .)
+    ATIVO_MAXIMO    reduce using rule 4 (statements -> empty .)
+    SETOR_MAXIMO    reduce using rule 4 (statements -> empty .)
+    FREQUENCIA      reduce using rule 4 (statements -> empty .)
+    TOLERANCIA      reduce using rule 4 (statements -> empty .)
+    METODO          reduce using rule 4 (statements -> empty .)
+    ALOCACAO        reduce using rule 4 (statements -> empty .)
+    RESTRICOES      reduce using rule 4 (statements -> empty .)
+    CONCENTRACAO    reduce using rule 4 (statements -> empty .)
+    SETORIAL        reduce using rule 4 (statements -> empty .)
+    GEOGRAFICO      reduce using rule 4 (statements -> empty .)
+    REBALANCEAMENTO reduce using rule 4 (statements -> empty .)
+
+
+state 7
+
+    (2) carteira -> CARTEIRA LBRACE statements RBRACE .
+
+    $end            reduce using rule 2 (carteira -> CARTEIRA LBRACE statements RBRACE .)
+
+
+state 8
+
+    (3) statements -> statements statement .
+
+    RBRACE          reduce using rule 3 (statements -> statements statement .)
+    ANALISAR        reduce using rule 3 (statements -> statements statement .)
+    GERAR_RELATORIO reduce using rule 3 (statements -> statements statement .)
+    IMPRIMIR        reduce using rule 3 (statements -> statements statement .)
+    SE              reduce using rule 3 (statements -> statements statement .)
+    ID              reduce using rule 3 (statements -> statements statement .)
+    NOME            reduce using rule 3 (statements -> statements statement .)
+    PERFIL          reduce using rule 3 (statements -> statements statement .)
+    OBJETIVO        reduce using rule 3 (statements -> statements statement .)
+    HORIZONTE_TEMPORAL reduce using rule 3 (statements -> statements statement .)
+    CAPITAL_TOTAL   reduce using rule 3 (statements -> statements statement .)
+    VOLATILIDADE_MAXIMA reduce using rule 3 (statements -> statements statement .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 3 (statements -> statements statement .)
+    ATIVO_MAXIMO    reduce using rule 3 (statements -> statements statement .)
+    SETOR_MAXIMO    reduce using rule 3 (statements -> statements statement .)
+    FREQUENCIA      reduce using rule 3 (statements -> statements statement .)
+    TOLERANCIA      reduce using rule 3 (statements -> statements statement .)
+    METODO          reduce using rule 3 (statements -> statements statement .)
+    ALOCACAO        reduce using rule 3 (statements -> statements statement .)
+    RESTRICOES      reduce using rule 3 (statements -> statements statement .)
+    CONCENTRACAO    reduce using rule 3 (statements -> statements statement .)
+    SETORIAL        reduce using rule 3 (statements -> statements statement .)
+    GEOGRAFICO      reduce using rule 3 (statements -> statements statement .)
+    REBALANCEAMENTO reduce using rule 3 (statements -> statements statement .)
+
+
+state 9
+
+    (6) statement -> assignment .
+
+    RBRACE          reduce using rule 6 (statement -> assignment .)
+    ANALISAR        reduce using rule 6 (statement -> assignment .)
+    GERAR_RELATORIO reduce using rule 6 (statement -> assignment .)
+    IMPRIMIR        reduce using rule 6 (statement -> assignment .)
+    SE              reduce using rule 6 (statement -> assignment .)
+    ID              reduce using rule 6 (statement -> assignment .)
+    NOME            reduce using rule 6 (statement -> assignment .)
+    PERFIL          reduce using rule 6 (statement -> assignment .)
+    OBJETIVO        reduce using rule 6 (statement -> assignment .)
+    HORIZONTE_TEMPORAL reduce using rule 6 (statement -> assignment .)
+    CAPITAL_TOTAL   reduce using rule 6 (statement -> assignment .)
+    VOLATILIDADE_MAXIMA reduce using rule 6 (statement -> assignment .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 6 (statement -> assignment .)
+    ATIVO_MAXIMO    reduce using rule 6 (statement -> assignment .)
+    SETOR_MAXIMO    reduce using rule 6 (statement -> assignment .)
+    FREQUENCIA      reduce using rule 6 (statement -> assignment .)
+    TOLERANCIA      reduce using rule 6 (statement -> assignment .)
+    METODO          reduce using rule 6 (statement -> assignment .)
+    ALOCACAO        reduce using rule 6 (statement -> assignment .)
+    RESTRICOES      reduce using rule 6 (statement -> assignment .)
+    CONCENTRACAO    reduce using rule 6 (statement -> assignment .)
+    SETORIAL        reduce using rule 6 (statement -> assignment .)
+    GEOGRAFICO      reduce using rule 6 (statement -> assignment .)
+    REBALANCEAMENTO reduce using rule 6 (statement -> assignment .)
+
+
+state 10
+
+    (7) statement -> section .
+
+    RBRACE          reduce using rule 7 (statement -> section .)
+    ANALISAR        reduce using rule 7 (statement -> section .)
+    GERAR_RELATORIO reduce using rule 7 (statement -> section .)
+    IMPRIMIR        reduce using rule 7 (statement -> section .)
+    SE              reduce using rule 7 (statement -> section .)
+    ID              reduce using rule 7 (statement -> section .)
+    NOME            reduce using rule 7 (statement -> section .)
+    PERFIL          reduce using rule 7 (statement -> section .)
+    OBJETIVO        reduce using rule 7 (statement -> section .)
+    HORIZONTE_TEMPORAL reduce using rule 7 (statement -> section .)
+    CAPITAL_TOTAL   reduce using rule 7 (statement -> section .)
+    VOLATILIDADE_MAXIMA reduce using rule 7 (statement -> section .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 7 (statement -> section .)
+    ATIVO_MAXIMO    reduce using rule 7 (statement -> section .)
+    SETOR_MAXIMO    reduce using rule 7 (statement -> section .)
+    FREQUENCIA      reduce using rule 7 (statement -> section .)
+    TOLERANCIA      reduce using rule 7 (statement -> section .)
+    METODO          reduce using rule 7 (statement -> section .)
+    ALOCACAO        reduce using rule 7 (statement -> section .)
+    RESTRICOES      reduce using rule 7 (statement -> section .)
+    CONCENTRACAO    reduce using rule 7 (statement -> section .)
+    SETORIAL        reduce using rule 7 (statement -> section .)
+    GEOGRAFICO      reduce using rule 7 (statement -> section .)
+    REBALANCEAMENTO reduce using rule 7 (statement -> section .)
+
+
+state 11
+
+    (8) statement -> command .
+
+    RBRACE          reduce using rule 8 (statement -> command .)
+    ANALISAR        reduce using rule 8 (statement -> command .)
+    GERAR_RELATORIO reduce using rule 8 (statement -> command .)
+    IMPRIMIR        reduce using rule 8 (statement -> command .)
+    SE              reduce using rule 8 (statement -> command .)
+    ID              reduce using rule 8 (statement -> command .)
+    NOME            reduce using rule 8 (statement -> command .)
+    PERFIL          reduce using rule 8 (statement -> command .)
+    OBJETIVO        reduce using rule 8 (statement -> command .)
+    HORIZONTE_TEMPORAL reduce using rule 8 (statement -> command .)
+    CAPITAL_TOTAL   reduce using rule 8 (statement -> command .)
+    VOLATILIDADE_MAXIMA reduce using rule 8 (statement -> command .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 8 (statement -> command .)
+    ATIVO_MAXIMO    reduce using rule 8 (statement -> command .)
+    SETOR_MAXIMO    reduce using rule 8 (statement -> command .)
+    FREQUENCIA      reduce using rule 8 (statement -> command .)
+    TOLERANCIA      reduce using rule 8 (statement -> command .)
+    METODO          reduce using rule 8 (statement -> command .)
+    ALOCACAO        reduce using rule 8 (statement -> command .)
+    RESTRICOES      reduce using rule 8 (statement -> command .)
+    CONCENTRACAO    reduce using rule 8 (statement -> command .)
+    SETORIAL        reduce using rule 8 (statement -> command .)
+    GEOGRAFICO      reduce using rule 8 (statement -> command .)
+    REBALANCEAMENTO reduce using rule 8 (statement -> command .)
+
+
+state 12
+
+    (9) statement -> conditional .
+
+    RBRACE          reduce using rule 9 (statement -> conditional .)
+    ANALISAR        reduce using rule 9 (statement -> conditional .)
+    GERAR_RELATORIO reduce using rule 9 (statement -> conditional .)
+    IMPRIMIR        reduce using rule 9 (statement -> conditional .)
+    SE              reduce using rule 9 (statement -> conditional .)
+    ID              reduce using rule 9 (statement -> conditional .)
+    NOME            reduce using rule 9 (statement -> conditional .)
+    PERFIL          reduce using rule 9 (statement -> conditional .)
+    OBJETIVO        reduce using rule 9 (statement -> conditional .)
+    HORIZONTE_TEMPORAL reduce using rule 9 (statement -> conditional .)
+    CAPITAL_TOTAL   reduce using rule 9 (statement -> conditional .)
+    VOLATILIDADE_MAXIMA reduce using rule 9 (statement -> conditional .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 9 (statement -> conditional .)
+    ATIVO_MAXIMO    reduce using rule 9 (statement -> conditional .)
+    SETOR_MAXIMO    reduce using rule 9 (statement -> conditional .)
+    FREQUENCIA      reduce using rule 9 (statement -> conditional .)
+    TOLERANCIA      reduce using rule 9 (statement -> conditional .)
+    METODO          reduce using rule 9 (statement -> conditional .)
+    ALOCACAO        reduce using rule 9 (statement -> conditional .)
+    RESTRICOES      reduce using rule 9 (statement -> conditional .)
+    CONCENTRACAO    reduce using rule 9 (statement -> conditional .)
+    SETORIAL        reduce using rule 9 (statement -> conditional .)
+    GEOGRAFICO      reduce using rule 9 (statement -> conditional .)
+    REBALANCEAMENTO reduce using rule 9 (statement -> conditional .)
+
+
+state 13
+
+    (10) assignment -> key . ASSIGN value SEMICOLON
+
+    ASSIGN          shift and go to state 38
+
+
+state 14
+
+    (29) section -> section_name . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 39
+
+
+state 15
+
+    (36) command -> ANALISAR . SEMICOLON
+
+    SEMICOLON       shift and go to state 40
+
+
+state 16
+
+    (37) command -> GERAR_RELATORIO . SEMICOLON
+
+    SEMICOLON       shift and go to state 41
+
+
+state 17
+
+    (38) command -> IMPRIMIR . LPAREN value RPAREN SEMICOLON
+
+    LPAREN          shift and go to state 42
+
+
+state 18
+
+    (39) conditional -> SE . LPAREN expression RPAREN LBRACE statements RBRACE
+
+    LPAREN          shift and go to state 43
+
+
+state 19
+
+    (11) key -> ID .
+
+    ASSIGN          reduce using rule 11 (key -> ID .)
+    EQ              reduce using rule 11 (key -> ID .)
+    NE              reduce using rule 11 (key -> ID .)
+    LT              reduce using rule 11 (key -> ID .)
+    GT              reduce using rule 11 (key -> ID .)
+    LE              reduce using rule 11 (key -> ID .)
+    GE              reduce using rule 11 (key -> ID .)
+
+
+state 20
+
+    (12) key -> NOME .
+
+    ASSIGN          reduce using rule 12 (key -> NOME .)
+    EQ              reduce using rule 12 (key -> NOME .)
+    NE              reduce using rule 12 (key -> NOME .)
+    LT              reduce using rule 12 (key -> NOME .)
+    GT              reduce using rule 12 (key -> NOME .)
+    LE              reduce using rule 12 (key -> NOME .)
+    GE              reduce using rule 12 (key -> NOME .)
+
+
+state 21
+
+    (13) key -> PERFIL .
+
+    ASSIGN          reduce using rule 13 (key -> PERFIL .)
+    EQ              reduce using rule 13 (key -> PERFIL .)
+    NE              reduce using rule 13 (key -> PERFIL .)
+    LT              reduce using rule 13 (key -> PERFIL .)
+    GT              reduce using rule 13 (key -> PERFIL .)
+    LE              reduce using rule 13 (key -> PERFIL .)
+    GE              reduce using rule 13 (key -> PERFIL .)
+
+
+state 22
+
+    (14) key -> OBJETIVO .
+
+    ASSIGN          reduce using rule 14 (key -> OBJETIVO .)
+    EQ              reduce using rule 14 (key -> OBJETIVO .)
+    NE              reduce using rule 14 (key -> OBJETIVO .)
+    LT              reduce using rule 14 (key -> OBJETIVO .)
+    GT              reduce using rule 14 (key -> OBJETIVO .)
+    LE              reduce using rule 14 (key -> OBJETIVO .)
+    GE              reduce using rule 14 (key -> OBJETIVO .)
+
+
+state 23
+
+    (15) key -> HORIZONTE_TEMPORAL .
+
+    ASSIGN          reduce using rule 15 (key -> HORIZONTE_TEMPORAL .)
+    EQ              reduce using rule 15 (key -> HORIZONTE_TEMPORAL .)
+    NE              reduce using rule 15 (key -> HORIZONTE_TEMPORAL .)
+    LT              reduce using rule 15 (key -> HORIZONTE_TEMPORAL .)
+    GT              reduce using rule 15 (key -> HORIZONTE_TEMPORAL .)
+    LE              reduce using rule 15 (key -> HORIZONTE_TEMPORAL .)
+    GE              reduce using rule 15 (key -> HORIZONTE_TEMPORAL .)
+
+
+state 24
+
+    (16) key -> CAPITAL_TOTAL .
+
+    ASSIGN          reduce using rule 16 (key -> CAPITAL_TOTAL .)
+    EQ              reduce using rule 16 (key -> CAPITAL_TOTAL .)
+    NE              reduce using rule 16 (key -> CAPITAL_TOTAL .)
+    LT              reduce using rule 16 (key -> CAPITAL_TOTAL .)
+    GT              reduce using rule 16 (key -> CAPITAL_TOTAL .)
+    LE              reduce using rule 16 (key -> CAPITAL_TOTAL .)
+    GE              reduce using rule 16 (key -> CAPITAL_TOTAL .)
+
+
+state 25
+
+    (17) key -> VOLATILIDADE_MAXIMA .
+
+    ASSIGN          reduce using rule 17 (key -> VOLATILIDADE_MAXIMA .)
+    EQ              reduce using rule 17 (key -> VOLATILIDADE_MAXIMA .)
+    NE              reduce using rule 17 (key -> VOLATILIDADE_MAXIMA .)
+    LT              reduce using rule 17 (key -> VOLATILIDADE_MAXIMA .)
+    GT              reduce using rule 17 (key -> VOLATILIDADE_MAXIMA .)
+    LE              reduce using rule 17 (key -> VOLATILIDADE_MAXIMA .)
+    GE              reduce using rule 17 (key -> VOLATILIDADE_MAXIMA .)
+
+
+state 26
+
+    (18) key -> TAXA_ADMINISTRATIVA_MAXIMA .
+
+    ASSIGN          reduce using rule 18 (key -> TAXA_ADMINISTRATIVA_MAXIMA .)
+    EQ              reduce using rule 18 (key -> TAXA_ADMINISTRATIVA_MAXIMA .)
+    NE              reduce using rule 18 (key -> TAXA_ADMINISTRATIVA_MAXIMA .)
+    LT              reduce using rule 18 (key -> TAXA_ADMINISTRATIVA_MAXIMA .)
+    GT              reduce using rule 18 (key -> TAXA_ADMINISTRATIVA_MAXIMA .)
+    LE              reduce using rule 18 (key -> TAXA_ADMINISTRATIVA_MAXIMA .)
+    GE              reduce using rule 18 (key -> TAXA_ADMINISTRATIVA_MAXIMA .)
+
+
+state 27
+
+    (19) key -> ATIVO_MAXIMO .
+
+    ASSIGN          reduce using rule 19 (key -> ATIVO_MAXIMO .)
+    EQ              reduce using rule 19 (key -> ATIVO_MAXIMO .)
+    NE              reduce using rule 19 (key -> ATIVO_MAXIMO .)
+    LT              reduce using rule 19 (key -> ATIVO_MAXIMO .)
+    GT              reduce using rule 19 (key -> ATIVO_MAXIMO .)
+    LE              reduce using rule 19 (key -> ATIVO_MAXIMO .)
+    GE              reduce using rule 19 (key -> ATIVO_MAXIMO .)
+
+
+state 28
+
+    (20) key -> SETOR_MAXIMO .
+
+    ASSIGN          reduce using rule 20 (key -> SETOR_MAXIMO .)
+    EQ              reduce using rule 20 (key -> SETOR_MAXIMO .)
+    NE              reduce using rule 20 (key -> SETOR_MAXIMO .)
+    LT              reduce using rule 20 (key -> SETOR_MAXIMO .)
+    GT              reduce using rule 20 (key -> SETOR_MAXIMO .)
+    LE              reduce using rule 20 (key -> SETOR_MAXIMO .)
+    GE              reduce using rule 20 (key -> SETOR_MAXIMO .)
+
+
+state 29
+
+    (21) key -> FREQUENCIA .
+
+    ASSIGN          reduce using rule 21 (key -> FREQUENCIA .)
+    EQ              reduce using rule 21 (key -> FREQUENCIA .)
+    NE              reduce using rule 21 (key -> FREQUENCIA .)
+    LT              reduce using rule 21 (key -> FREQUENCIA .)
+    GT              reduce using rule 21 (key -> FREQUENCIA .)
+    LE              reduce using rule 21 (key -> FREQUENCIA .)
+    GE              reduce using rule 21 (key -> FREQUENCIA .)
+
+
+state 30
+
+    (22) key -> TOLERANCIA .
+
+    ASSIGN          reduce using rule 22 (key -> TOLERANCIA .)
+    EQ              reduce using rule 22 (key -> TOLERANCIA .)
+    NE              reduce using rule 22 (key -> TOLERANCIA .)
+    LT              reduce using rule 22 (key -> TOLERANCIA .)
+    GT              reduce using rule 22 (key -> TOLERANCIA .)
+    LE              reduce using rule 22 (key -> TOLERANCIA .)
+    GE              reduce using rule 22 (key -> TOLERANCIA .)
+
+
+state 31
+
+    (23) key -> METODO .
+
+    ASSIGN          reduce using rule 23 (key -> METODO .)
+    EQ              reduce using rule 23 (key -> METODO .)
+    NE              reduce using rule 23 (key -> METODO .)
+    LT              reduce using rule 23 (key -> METODO .)
+    GT              reduce using rule 23 (key -> METODO .)
+    LE              reduce using rule 23 (key -> METODO .)
+    GE              reduce using rule 23 (key -> METODO .)
+
+
+state 32
+
+    (30) section_name -> ALOCACAO .
+
+    LBRACE          reduce using rule 30 (section_name -> ALOCACAO .)
+
+
+state 33
+
+    (31) section_name -> RESTRICOES .
+
+    LBRACE          reduce using rule 31 (section_name -> RESTRICOES .)
+
+
+state 34
+
+    (32) section_name -> CONCENTRACAO .
+
+    LBRACE          reduce using rule 32 (section_name -> CONCENTRACAO .)
+
+
+state 35
+
+    (33) section_name -> SETORIAL .
+
+    LBRACE          reduce using rule 33 (section_name -> SETORIAL .)
+
+
+state 36
+
+    (34) section_name -> GEOGRAFICO .
+
+    LBRACE          reduce using rule 34 (section_name -> GEOGRAFICO .)
+
+
+state 37
+
+    (35) section_name -> REBALANCEAMENTO .
+
+    LBRACE          reduce using rule 35 (section_name -> REBALANCEAMENTO .)
+
+
+state 38
+
+    (10) assignment -> key ASSIGN . value SEMICOLON
+    (24) value -> . NUMBER
+    (25) value -> . PERCENTAGE
+    (26) value -> . STRING
+    (27) value -> . ID
+    (28) value -> . NUMBER YEARS
+
+    NUMBER          shift and go to state 45
+    PERCENTAGE      shift and go to state 46
+    STRING          shift and go to state 47
+    ID              shift and go to state 48
+
+    value                          shift and go to state 44
+
+state 39
+
+    (29) section -> section_name LBRACE . statements RBRACE
+    (3) statements -> . statements statement
+    (4) statements -> . empty
+    (5) empty -> .
+
+    RBRACE          reduce using rule 5 (empty -> .)
+    ANALISAR        reduce using rule 5 (empty -> .)
+    GERAR_RELATORIO reduce using rule 5 (empty -> .)
+    IMPRIMIR        reduce using rule 5 (empty -> .)
+    SE              reduce using rule 5 (empty -> .)
+    ID              reduce using rule 5 (empty -> .)
+    NOME            reduce using rule 5 (empty -> .)
+    PERFIL          reduce using rule 5 (empty -> .)
+    OBJETIVO        reduce using rule 5 (empty -> .)
+    HORIZONTE_TEMPORAL reduce using rule 5 (empty -> .)
+    CAPITAL_TOTAL   reduce using rule 5 (empty -> .)
+    VOLATILIDADE_MAXIMA reduce using rule 5 (empty -> .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 5 (empty -> .)
+    ATIVO_MAXIMO    reduce using rule 5 (empty -> .)
+    SETOR_MAXIMO    reduce using rule 5 (empty -> .)
+    FREQUENCIA      reduce using rule 5 (empty -> .)
+    TOLERANCIA      reduce using rule 5 (empty -> .)
+    METODO          reduce using rule 5 (empty -> .)
+    ALOCACAO        reduce using rule 5 (empty -> .)
+    RESTRICOES      reduce using rule 5 (empty -> .)
+    CONCENTRACAO    reduce using rule 5 (empty -> .)
+    SETORIAL        reduce using rule 5 (empty -> .)
+    GEOGRAFICO      reduce using rule 5 (empty -> .)
+    REBALANCEAMENTO reduce using rule 5 (empty -> .)
+
+    statements                     shift and go to state 49
+    empty                          shift and go to state 6
+
+state 40
+
+    (36) command -> ANALISAR SEMICOLON .
+
+    RBRACE          reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    ANALISAR        reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    GERAR_RELATORIO reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    IMPRIMIR        reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    SE              reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    ID              reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    NOME            reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    PERFIL          reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    OBJETIVO        reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    HORIZONTE_TEMPORAL reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    CAPITAL_TOTAL   reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    VOLATILIDADE_MAXIMA reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    ATIVO_MAXIMO    reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    SETOR_MAXIMO    reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    FREQUENCIA      reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    TOLERANCIA      reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    METODO          reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    ALOCACAO        reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    RESTRICOES      reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    CONCENTRACAO    reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    SETORIAL        reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    GEOGRAFICO      reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+    REBALANCEAMENTO reduce using rule 36 (command -> ANALISAR SEMICOLON .)
+
+
+state 41
+
+    (37) command -> GERAR_RELATORIO SEMICOLON .
+
+    RBRACE          reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    ANALISAR        reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    GERAR_RELATORIO reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    IMPRIMIR        reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    SE              reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    ID              reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    NOME            reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    PERFIL          reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    OBJETIVO        reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    HORIZONTE_TEMPORAL reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    CAPITAL_TOTAL   reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    VOLATILIDADE_MAXIMA reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    ATIVO_MAXIMO    reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    SETOR_MAXIMO    reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    FREQUENCIA      reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    TOLERANCIA      reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    METODO          reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    ALOCACAO        reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    RESTRICOES      reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    CONCENTRACAO    reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    SETORIAL        reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    GEOGRAFICO      reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+    REBALANCEAMENTO reduce using rule 37 (command -> GERAR_RELATORIO SEMICOLON .)
+
+
+state 42
+
+    (38) command -> IMPRIMIR LPAREN . value RPAREN SEMICOLON
+    (24) value -> . NUMBER
+    (25) value -> . PERCENTAGE
+    (26) value -> . STRING
+    (27) value -> . ID
+    (28) value -> . NUMBER YEARS
+
+    NUMBER          shift and go to state 45
+    PERCENTAGE      shift and go to state 46
+    STRING          shift and go to state 47
+    ID              shift and go to state 48
+
+    value                          shift and go to state 50
+
+state 43
+
+    (39) conditional -> SE LPAREN . expression RPAREN LBRACE statements RBRACE
+    (40) expression -> . key relational_operator value
+    (11) key -> . ID
+    (12) key -> . NOME
+    (13) key -> . PERFIL
+    (14) key -> . OBJETIVO
+    (15) key -> . HORIZONTE_TEMPORAL
+    (16) key -> . CAPITAL_TOTAL
+    (17) key -> . VOLATILIDADE_MAXIMA
+    (18) key -> . TAXA_ADMINISTRATIVA_MAXIMA
+    (19) key -> . ATIVO_MAXIMO
+    (20) key -> . SETOR_MAXIMO
+    (21) key -> . FREQUENCIA
+    (22) key -> . TOLERANCIA
+    (23) key -> . METODO
+
+    ID              shift and go to state 19
+    NOME            shift and go to state 20
+    PERFIL          shift and go to state 21
+    OBJETIVO        shift and go to state 22
+    HORIZONTE_TEMPORAL shift and go to state 23
+    CAPITAL_TOTAL   shift and go to state 24
+    VOLATILIDADE_MAXIMA shift and go to state 25
+    TAXA_ADMINISTRATIVA_MAXIMA shift and go to state 26
+    ATIVO_MAXIMO    shift and go to state 27
+    SETOR_MAXIMO    shift and go to state 28
+    FREQUENCIA      shift and go to state 29
+    TOLERANCIA      shift and go to state 30
+    METODO          shift and go to state 31
+
+    expression                     shift and go to state 51
+    key                            shift and go to state 52
+
+state 44
+
+    (10) assignment -> key ASSIGN value . SEMICOLON
+
+    SEMICOLON       shift and go to state 53
+
+
+state 45
+
+    (24) value -> NUMBER .
+    (28) value -> NUMBER . YEARS
+
+    SEMICOLON       reduce using rule 24 (value -> NUMBER .)
+    RPAREN          reduce using rule 24 (value -> NUMBER .)
+    YEARS           shift and go to state 54
+
+
+state 46
+
+    (25) value -> PERCENTAGE .
+
+    SEMICOLON       reduce using rule 25 (value -> PERCENTAGE .)
+    RPAREN          reduce using rule 25 (value -> PERCENTAGE .)
+
+
+state 47
+
+    (26) value -> STRING .
+
+    SEMICOLON       reduce using rule 26 (value -> STRING .)
+    RPAREN          reduce using rule 26 (value -> STRING .)
+
+
+state 48
+
+    (27) value -> ID .
+
+    SEMICOLON       reduce using rule 27 (value -> ID .)
+    RPAREN          reduce using rule 27 (value -> ID .)
+
+
+state 49
+
+    (29) section -> section_name LBRACE statements . RBRACE
+    (3) statements -> statements . statement
+    (6) statement -> . assignment
+    (7) statement -> . section
+    (8) statement -> . command
+    (9) statement -> . conditional
+    (10) assignment -> . key ASSIGN value SEMICOLON
+    (29) section -> . section_name LBRACE statements RBRACE
+    (36) command -> . ANALISAR SEMICOLON
+    (37) command -> . GERAR_RELATORIO SEMICOLON
+    (38) command -> . IMPRIMIR LPAREN value RPAREN SEMICOLON
+    (39) conditional -> . SE LPAREN expression RPAREN LBRACE statements RBRACE
+    (11) key -> . ID
+    (12) key -> . NOME
+    (13) key -> . PERFIL
+    (14) key -> . OBJETIVO
+    (15) key -> . HORIZONTE_TEMPORAL
+    (16) key -> . CAPITAL_TOTAL
+    (17) key -> . VOLATILIDADE_MAXIMA
+    (18) key -> . TAXA_ADMINISTRATIVA_MAXIMA
+    (19) key -> . ATIVO_MAXIMO
+    (20) key -> . SETOR_MAXIMO
+    (21) key -> . FREQUENCIA
+    (22) key -> . TOLERANCIA
+    (23) key -> . METODO
+    (30) section_name -> . ALOCACAO
+    (31) section_name -> . RESTRICOES
+    (32) section_name -> . CONCENTRACAO
+    (33) section_name -> . SETORIAL
+    (34) section_name -> . GEOGRAFICO
+    (35) section_name -> . REBALANCEAMENTO
+
+    RBRACE          shift and go to state 55
+    ANALISAR        shift and go to state 15
+    GERAR_RELATORIO shift and go to state 16
+    IMPRIMIR        shift and go to state 17
+    SE              shift and go to state 18
+    ID              shift and go to state 19
+    NOME            shift and go to state 20
+    PERFIL          shift and go to state 21
+    OBJETIVO        shift and go to state 22
+    HORIZONTE_TEMPORAL shift and go to state 23
+    CAPITAL_TOTAL   shift and go to state 24
+    VOLATILIDADE_MAXIMA shift and go to state 25
+    TAXA_ADMINISTRATIVA_MAXIMA shift and go to state 26
+    ATIVO_MAXIMO    shift and go to state 27
+    SETOR_MAXIMO    shift and go to state 28
+    FREQUENCIA      shift and go to state 29
+    TOLERANCIA      shift and go to state 30
+    METODO          shift and go to state 31
+    ALOCACAO        shift and go to state 32
+    RESTRICOES      shift and go to state 33
+    CONCENTRACAO    shift and go to state 34
+    SETORIAL        shift and go to state 35
+    GEOGRAFICO      shift and go to state 36
+    REBALANCEAMENTO shift and go to state 37
+
+    section_name                   shift and go to state 14
+    statement                      shift and go to state 8
+    assignment                     shift and go to state 9
+    section                        shift and go to state 10
+    command                        shift and go to state 11
+    conditional                    shift and go to state 12
+    key                            shift and go to state 13
+
+state 50
+
+    (38) command -> IMPRIMIR LPAREN value . RPAREN SEMICOLON
+
+    RPAREN          shift and go to state 56
+
+
+state 51
+
+    (39) conditional -> SE LPAREN expression . RPAREN LBRACE statements RBRACE
+
+    RPAREN          shift and go to state 57
+
+
+state 52
+
+    (40) expression -> key . relational_operator value
+    (41) relational_operator -> . EQ
+    (42) relational_operator -> . NE
+    (43) relational_operator -> . LT
+    (44) relational_operator -> . GT
+    (45) relational_operator -> . LE
+    (46) relational_operator -> . GE
+
+    EQ              shift and go to state 59
+    NE              shift and go to state 60
+    LT              shift and go to state 61
+    GT              shift and go to state 62
+    LE              shift and go to state 63
+    GE              shift and go to state 64
+
+    relational_operator            shift and go to state 58
+
+state 53
+
+    (10) assignment -> key ASSIGN value SEMICOLON .
+
+    RBRACE          reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    ANALISAR        reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    GERAR_RELATORIO reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    IMPRIMIR        reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    SE              reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    ID              reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    NOME            reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    PERFIL          reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    OBJETIVO        reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    HORIZONTE_TEMPORAL reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    CAPITAL_TOTAL   reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    VOLATILIDADE_MAXIMA reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    ATIVO_MAXIMO    reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    SETOR_MAXIMO    reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    FREQUENCIA      reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    TOLERANCIA      reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    METODO          reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    ALOCACAO        reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    RESTRICOES      reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    CONCENTRACAO    reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    SETORIAL        reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    GEOGRAFICO      reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+    REBALANCEAMENTO reduce using rule 10 (assignment -> key ASSIGN value SEMICOLON .)
+
+
+state 54
+
+    (28) value -> NUMBER YEARS .
+
+    SEMICOLON       reduce using rule 28 (value -> NUMBER YEARS .)
+    RPAREN          reduce using rule 28 (value -> NUMBER YEARS .)
+
+
+state 55
+
+    (29) section -> section_name LBRACE statements RBRACE .
+
+    RBRACE          reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    ANALISAR        reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    GERAR_RELATORIO reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    IMPRIMIR        reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    SE              reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    ID              reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    NOME            reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    PERFIL          reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    OBJETIVO        reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    HORIZONTE_TEMPORAL reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    CAPITAL_TOTAL   reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    VOLATILIDADE_MAXIMA reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    ATIVO_MAXIMO    reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    SETOR_MAXIMO    reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    FREQUENCIA      reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    TOLERANCIA      reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    METODO          reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    ALOCACAO        reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    RESTRICOES      reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    CONCENTRACAO    reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    SETORIAL        reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    GEOGRAFICO      reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+    REBALANCEAMENTO reduce using rule 29 (section -> section_name LBRACE statements RBRACE .)
+
+
+state 56
+
+    (38) command -> IMPRIMIR LPAREN value RPAREN . SEMICOLON
+
+    SEMICOLON       shift and go to state 65
+
+
+state 57
+
+    (39) conditional -> SE LPAREN expression RPAREN . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 66
+
+
+state 58
+
+    (40) expression -> key relational_operator . value
+    (24) value -> . NUMBER
+    (25) value -> . PERCENTAGE
+    (26) value -> . STRING
+    (27) value -> . ID
+    (28) value -> . NUMBER YEARS
+
+    NUMBER          shift and go to state 45
+    PERCENTAGE      shift and go to state 46
+    STRING          shift and go to state 47
+    ID              shift and go to state 48
+
+    value                          shift and go to state 67
+
+state 59
+
+    (41) relational_operator -> EQ .
+
+    NUMBER          reduce using rule 41 (relational_operator -> EQ .)
+    PERCENTAGE      reduce using rule 41 (relational_operator -> EQ .)
+    STRING          reduce using rule 41 (relational_operator -> EQ .)
+    ID              reduce using rule 41 (relational_operator -> EQ .)
+
+
+state 60
+
+    (42) relational_operator -> NE .
+
+    NUMBER          reduce using rule 42 (relational_operator -> NE .)
+    PERCENTAGE      reduce using rule 42 (relational_operator -> NE .)
+    STRING          reduce using rule 42 (relational_operator -> NE .)
+    ID              reduce using rule 42 (relational_operator -> NE .)
+
+
+state 61
+
+    (43) relational_operator -> LT .
+
+    NUMBER          reduce using rule 43 (relational_operator -> LT .)
+    PERCENTAGE      reduce using rule 43 (relational_operator -> LT .)
+    STRING          reduce using rule 43 (relational_operator -> LT .)
+    ID              reduce using rule 43 (relational_operator -> LT .)
+
+
+state 62
+
+    (44) relational_operator -> GT .
+
+    NUMBER          reduce using rule 44 (relational_operator -> GT .)
+    PERCENTAGE      reduce using rule 44 (relational_operator -> GT .)
+    STRING          reduce using rule 44 (relational_operator -> GT .)
+    ID              reduce using rule 44 (relational_operator -> GT .)
+
+
+state 63
+
+    (45) relational_operator -> LE .
+
+    NUMBER          reduce using rule 45 (relational_operator -> LE .)
+    PERCENTAGE      reduce using rule 45 (relational_operator -> LE .)
+    STRING          reduce using rule 45 (relational_operator -> LE .)
+    ID              reduce using rule 45 (relational_operator -> LE .)
+
+
+state 64
+
+    (46) relational_operator -> GE .
+
+    NUMBER          reduce using rule 46 (relational_operator -> GE .)
+    PERCENTAGE      reduce using rule 46 (relational_operator -> GE .)
+    STRING          reduce using rule 46 (relational_operator -> GE .)
+    ID              reduce using rule 46 (relational_operator -> GE .)
+
+
+state 65
+
+    (38) command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .
+
+    RBRACE          reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    ANALISAR        reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    GERAR_RELATORIO reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    IMPRIMIR        reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    SE              reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    ID              reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    NOME            reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    PERFIL          reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    OBJETIVO        reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    HORIZONTE_TEMPORAL reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    CAPITAL_TOTAL   reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    VOLATILIDADE_MAXIMA reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    ATIVO_MAXIMO    reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    SETOR_MAXIMO    reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    FREQUENCIA      reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    TOLERANCIA      reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    METODO          reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    ALOCACAO        reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    RESTRICOES      reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    CONCENTRACAO    reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    SETORIAL        reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    GEOGRAFICO      reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+    REBALANCEAMENTO reduce using rule 38 (command -> IMPRIMIR LPAREN value RPAREN SEMICOLON .)
+
+
+state 66
+
+    (39) conditional -> SE LPAREN expression RPAREN LBRACE . statements RBRACE
+    (3) statements -> . statements statement
+    (4) statements -> . empty
+    (5) empty -> .
+
+    RBRACE          reduce using rule 5 (empty -> .)
+    ANALISAR        reduce using rule 5 (empty -> .)
+    GERAR_RELATORIO reduce using rule 5 (empty -> .)
+    IMPRIMIR        reduce using rule 5 (empty -> .)
+    SE              reduce using rule 5 (empty -> .)
+    ID              reduce using rule 5 (empty -> .)
+    NOME            reduce using rule 5 (empty -> .)
+    PERFIL          reduce using rule 5 (empty -> .)
+    OBJETIVO        reduce using rule 5 (empty -> .)
+    HORIZONTE_TEMPORAL reduce using rule 5 (empty -> .)
+    CAPITAL_TOTAL   reduce using rule 5 (empty -> .)
+    VOLATILIDADE_MAXIMA reduce using rule 5 (empty -> .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 5 (empty -> .)
+    ATIVO_MAXIMO    reduce using rule 5 (empty -> .)
+    SETOR_MAXIMO    reduce using rule 5 (empty -> .)
+    FREQUENCIA      reduce using rule 5 (empty -> .)
+    TOLERANCIA      reduce using rule 5 (empty -> .)
+    METODO          reduce using rule 5 (empty -> .)
+    ALOCACAO        reduce using rule 5 (empty -> .)
+    RESTRICOES      reduce using rule 5 (empty -> .)
+    CONCENTRACAO    reduce using rule 5 (empty -> .)
+    SETORIAL        reduce using rule 5 (empty -> .)
+    GEOGRAFICO      reduce using rule 5 (empty -> .)
+    REBALANCEAMENTO reduce using rule 5 (empty -> .)
+
+    statements                     shift and go to state 68
+    empty                          shift and go to state 6
+
+state 67
+
+    (40) expression -> key relational_operator value .
+
+    RPAREN          reduce using rule 40 (expression -> key relational_operator value .)
+
+
+state 68
+
+    (39) conditional -> SE LPAREN expression RPAREN LBRACE statements . RBRACE
+    (3) statements -> statements . statement
+    (6) statement -> . assignment
+    (7) statement -> . section
+    (8) statement -> . command
+    (9) statement -> . conditional
+    (10) assignment -> . key ASSIGN value SEMICOLON
+    (29) section -> . section_name LBRACE statements RBRACE
+    (36) command -> . ANALISAR SEMICOLON
+    (37) command -> . GERAR_RELATORIO SEMICOLON
+    (38) command -> . IMPRIMIR LPAREN value RPAREN SEMICOLON
+    (39) conditional -> . SE LPAREN expression RPAREN LBRACE statements RBRACE
+    (11) key -> . ID
+    (12) key -> . NOME
+    (13) key -> . PERFIL
+    (14) key -> . OBJETIVO
+    (15) key -> . HORIZONTE_TEMPORAL
+    (16) key -> . CAPITAL_TOTAL
+    (17) key -> . VOLATILIDADE_MAXIMA
+    (18) key -> . TAXA_ADMINISTRATIVA_MAXIMA
+    (19) key -> . ATIVO_MAXIMO
+    (20) key -> . SETOR_MAXIMO
+    (21) key -> . FREQUENCIA
+    (22) key -> . TOLERANCIA
+    (23) key -> . METODO
+    (30) section_name -> . ALOCACAO
+    (31) section_name -> . RESTRICOES
+    (32) section_name -> . CONCENTRACAO
+    (33) section_name -> . SETORIAL
+    (34) section_name -> . GEOGRAFICO
+    (35) section_name -> . REBALANCEAMENTO
+
+    RBRACE          shift and go to state 69
+    ANALISAR        shift and go to state 15
+    GERAR_RELATORIO shift and go to state 16
+    IMPRIMIR        shift and go to state 17
+    SE              shift and go to state 18
+    ID              shift and go to state 19
+    NOME            shift and go to state 20
+    PERFIL          shift and go to state 21
+    OBJETIVO        shift and go to state 22
+    HORIZONTE_TEMPORAL shift and go to state 23
+    CAPITAL_TOTAL   shift and go to state 24
+    VOLATILIDADE_MAXIMA shift and go to state 25
+    TAXA_ADMINISTRATIVA_MAXIMA shift and go to state 26
+    ATIVO_MAXIMO    shift and go to state 27
+    SETOR_MAXIMO    shift and go to state 28
+    FREQUENCIA      shift and go to state 29
+    TOLERANCIA      shift and go to state 30
+    METODO          shift and go to state 31
+    ALOCACAO        shift and go to state 32
+    RESTRICOES      shift and go to state 33
+    CONCENTRACAO    shift and go to state 34
+    SETORIAL        shift and go to state 35
+    GEOGRAFICO      shift and go to state 36
+    REBALANCEAMENTO shift and go to state 37
+
+    statement                      shift and go to state 8
+    assignment                     shift and go to state 9
+    section                        shift and go to state 10
+    command                        shift and go to state 11
+    conditional                    shift and go to state 12
+    key                            shift and go to state 13
+    section_name                   shift and go to state 14
+
+state 69
+
+    (39) conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .
+
+    RBRACE          reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    ANALISAR        reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    GERAR_RELATORIO reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    IMPRIMIR        reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    SE              reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    ID              reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    NOME            reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    PERFIL          reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    OBJETIVO        reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    HORIZONTE_TEMPORAL reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    CAPITAL_TOTAL   reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    VOLATILIDADE_MAXIMA reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    TAXA_ADMINISTRATIVA_MAXIMA reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    ATIVO_MAXIMO    reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    SETOR_MAXIMO    reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    FREQUENCIA      reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    TOLERANCIA      reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    METODO          reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    ALOCACAO        reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    RESTRICOES      reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    CONCENTRACAO    reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    SETORIAL        reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    GEOGRAFICO      reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+    REBALANCEAMENTO reduce using rule 39 (conditional -> SE LPAREN expression RPAREN LBRACE statements RBRACE .)
+
